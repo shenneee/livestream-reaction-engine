@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livestream Reaction Engine</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <h1>Livestream Reaction Engine</h1>
+        <p class="subtitle">Welcome to the Livestream Reaction Engine! This application allows you to react to live streams in real-time.</p>
+        
+        <!--Main Livestream Stage-->
+        <div class="stage" id="stage">
+
+            <div class="stream-label">Live Stream</div>
+            <div class="welcome-message">
+                <h2>Welcome to the live stream!</h2>
+                <p>Send a reaction to get started! ❤️</p>
+            </div>
+
+            <!-- Reactions will appear inside this area -->
+        
+
+        <!-- Reaction Buttons -->
+        <div class="controls">
+            <div class="reaction-buttons">
+                <button class="reaction-button" data-reaction="👍">👍</button>
+                <button class="reaction-button" data-reaction="👎">👎</button>
+                <button class="reaction-button" data-reaction="❤️">❤️</button>
+                <button class="reaction-button" data-reaction="😂">😂</button>
+            </div>
+
+            <button id="send-button">Send Reaction</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
