@@ -153,3 +153,52 @@ h1 {
     opacity: 0;
   }
 }
+
+
+/* Animation mode controls */
+.mode-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.mode-controls select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background: #333;
+    color: white;
+    cursor: pointer;
+}
+
+/* Animation speed controls */
+.speed-control {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.speed-control label {
+    color: #ddd;
+    font-size: 14px;
+}
+
+#speed-slider {
+    width: 220px;
+    cursor: pointer;
+}
+
+/* GSAP floating reaction */
+.gsap-reaction {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 30px;
+    line-height: 1;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
