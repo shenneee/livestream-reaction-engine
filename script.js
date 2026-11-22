@@ -141,14 +141,23 @@ function createGsapReaction() {
     // Animate upward movement, horizontal sway,
     // scaling and fading using GSAP.
 
+    // Continuous upward movement, scaling and fading
     timeline.to(reaction, {
         y: -50,
-        x: startX + sway,
         scale: 1.3,
         opacity: 0,
         duration: 3,
         ease: "none"
-    });
+    }, 0);
+
+    // Horizontal swaying while moving upwards
+    timeline.to(reaction, {
+        x: startX + sway,
+        duration: 0.75,
+        ease: "sine.inOut",
+        repeat: 3,
+        yoyo: true
+    }, 0);
 
 
     // Apply the current playback speed
