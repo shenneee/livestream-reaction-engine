@@ -2,26 +2,28 @@
 
 ## 1. Setup & Running Instructions
 
-1. Download or extract the project folder.
-2. Open `index.html` in a modern web browser.
-3. Select a reaction using one of the available reaction buttons.
-4. Click **Send Reaction** to display a floating reaction.
-5. Use the Animation Mode selector to switch between Phase 1 (CSS) and Phase 2 (GSAP).
-6. In Phase 2, use the animation speed slider to adjust the playback speed of active reactions.
+1. Extract the project ZIP file.
+2. Open the project folder.
+3. Open `index.html` using **Google Chrome**.
+4. Ensure an internet connection is available to load the GSAP library.
+5. Select a reaction using one of the reaction buttons.
+6. Click **Send Reaction** to display the animation.
+7. Use the **Animation Mode** selector to switch between Phase 1 (CSS) and Phase 2 (GSAP).
+8. When using GSAP mode, adjust the **Animation Speed** slider to control the animation speed.
 
 **Requirements:**
-- A modern web browser.
+- Google Chrome browser.
 - An internet connection to load the GSAP library through its CDN.
 
 ## 2. Phase 1: CSS Keyframes Analysis
 
 **Paint Flashing Screenshot:**
 
-![Phase 1 Paint Flashing](screenshots/phase1-css/phase1-fps-paint-flashing.png)
+![Phase 1 Paint Flashing](screenshots/01-phase1-css/phase1-paint-flashing.png)
 
 **Performance Profile Screenshot:**
 
-![Phase 1 Performance Profile](screenshots/phase1-css/phase1-bottom-up.png)
+![Phase 1 Performance Profile](screenshots/01-phase1-css/phase1-performance-bottom-up.png)
 
 **Observations:**
 
@@ -33,13 +35,13 @@
 
 **Performance Profile Screenshot:**
 
-![Phase 2 GSAP Performance Profile](screenshots/phase2-gsap/phase2-bottom-up.png)
+![Phase 2 GSAP Performance Profile](screenshots/02-phase2-gsap/phase2-gsap-performance-bottom-up.png)
 
 **Observations:**
 
-- **Flame Chart and Frame Rate:** Compared with the CSS-mode retest, the GSAP recording showed considerably less Layout activity (36.6 ms compared with 1,880.3 ms) and less Painting time (132 ms compared with 307 ms). However, the FPS reading in the captured snapshots was lower in the GSAP recording (38.4 FPS compared with 57.0 FPS). These results show that reducing layout and painting work does not necessarily guarantee a higher frame rate in every recording.
+- **Flame Chart and Frame Rate:** The GSAP recording showed a frame rate of approximately 36 FPS in the captured snapshot. The recording lasted 5.47 seconds, with 1,160 ms spent in Scripting, 744 ms in Rendering and 261 ms in Painting. The Bottom-up analysis showed 372.8 ms of Recalculate Style activity, while Layout was not prominent among the visible activities. Compared with the CSS implementation, the GSAP implementation showed less layout-related activity, although it involved JavaScript processing to control the animations.
 
-- **Paint Invalidation Areas:** During the GSAP test with 50 reactions, no noticeable green flashing was observed while the reactions were moving upwards. However, when a second batch of 50 reactions was spawned consecutively, a row of green flashing areas appeared below the stage during spawning. This suggests that although GSAP's transform-based animations reduced repainting during movement, some painting activity still occurred when new reaction elements were added to the DOM.
+- **Paint Invalidation Areas:** During the GSAP test with 50 reactions, no noticeable green flashing was observed along the reactions' upward movement paths. However, when a second batch of 50 reactions was spawned consecutively, a row of green flashing areas appeared below the stage during spawning. This suggests that although GSAP's transform-based animations reduced repainting during movement, some painting activity still occurred when new reaction elements were created and added to the DOM.
 
 ## 4. Architectural Reflection
 
