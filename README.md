@@ -25,6 +25,10 @@
 
 ![Phase 1 Performance Profile](screenshots/01-phase1-css/phase1-performance-bottom-up.png)
 
+**Performance Summary:**
+
+![Phase 1 Performance Summary](screenshots/01-phase1-css/phase1-performance-summary.png)
+
 **Observations:**
 
 - **Paint Flashing:** During high-concurrency reaction spawning, green flashing appeared across almost half of the livestream stage. The green boxes closely followed the reactions' movement paths, forming a line as multiple reactions moved upwards. This indicates repeated repainting of areas affected by the animated reactions.
@@ -37,9 +41,17 @@
 
 ![Phase 2 GSAP Performance Profile](screenshots/02-phase2-gsap/phase2-gsap-performance-bottom-up.png)
 
+**Performance Summary:**
+
+![Phase 2 GSAP Performance Summary](screenshots/02-phase2-gsap/phase2-gsap-performance-summary.png)
+
 **Observations:**
 
-- **Flame Chart and Frame Rate:** The GSAP recording showed a frame rate of approximately 36 FPS in the captured snapshot. The recording lasted 5.47 seconds, with 1,160 ms spent in Scripting, 744 ms in Rendering and 261 ms in Painting. The Bottom-up analysis showed 372.8 ms of Recalculate Style activity, while Layout was not prominent among the visible activities. Compared with the CSS implementation, the GSAP implementation showed less layout-related activity, although it involved JavaScript processing to control the animations.
+- **Flame Chart and Frame Rate:** In the captured GSAP snapshot, the Frame Rendering Stats overlay showed **60.0 FPS**. The Performance Summary covered **6.07 seconds** and reported **1,301 ms of Scripting**, **785 ms of Rendering**, **419 ms of System activity** and **250 ms of Painting**.
+
+  In comparison, the Phase 1 CSS Performance Summary covered **5.36 seconds** and showed **56.4 FPS**, with **215 ms of Scripting**, **2,303 ms of Rendering**, **549 ms of System activity** and **305 ms of Painting**.
+
+  Based on these captured profiles, GSAP achieved a higher displayed frame rate and lower Rendering and Painting activity compared to CSS keyframes. However, GSAP recorded higher Scripting activity because it uses JavaScript to control the animations. These results represent the specific profiling sessions and may vary between runs.
 
 - **Paint Invalidation Areas:** During the GSAP test with 50 reactions, no noticeable green flashing was observed along the reactions' upward movement paths. However, when a second batch of 50 reactions was spawned consecutively, a row of green flashing areas appeared below the stage during spawning. This suggests that although GSAP's transform-based animations reduced repainting during movement, some painting activity still occurred when new reaction elements were created and added to the DOM.
 
